@@ -1,0 +1,102 @@
+{% load static %}
+<html>
+    <head>
+        <title>Borrower status prediction</title>
+
+        <meta charset="UTF-8">
+     <meta http-equiv="X-UA-Compatible" content="IE=Edge">
+     <meta name="description" content="">
+     <meta name="keywords" content="">
+     <meta name="author" content="Tooplate">
+     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+     <link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}" >
+     <link rel="stylesheet" href="{% static 'css/font-awesome.min.css' %}" >
+     <link rel="stylesheet" href="{% static 'css/animate.css' %}" >
+     <link rel="stylesheet" href="{% static 'css/owl.carousel.css' %}" >
+     <link rel="stylesheet" href="{% static 'css/owl.theme.default.min.css' %}" >
+     <link rel="stylesheet" href="{% static 'css/tooplate-style.css' %}" >
+     <style>
+          body {
+            margin: 0;
+            font-family: Arial, Helvetica, sans-serif;
+            align-items: center;
+            justify-content: center;
+          }
+          
+          .topnav {
+            overflow: hidden;
+            background-color: #333;
+          }
+          
+          .topnav a {
+            float: left;
+            color: #f2f2f2;
+            text-align: center;
+            padding: 14px 16px;
+            text-decoration: none;
+            font-size: 17px;
+          }
+          
+          .topnav a:hover {
+            background-color: #ddd;
+            color: black;
+          }
+          
+          .topnav a.active {
+            background-color: #04AA6D;
+            color: white;
+          }
+          </style>
+    </head>
+    <body id="top" data-spy="scroll" data-target=".navbar-collapse" data-offset="50" >
+
+       <div class="topnav">
+          <a href="/" class="navbar-brand" style="color:#008080; font-size: 30px;"><i ></i>Predict  Borrower Status</a>
+          <a href="/" class="smoothScroll" style="color:#008080;font-size: 30px;margin-left:1010px;">Home</a>
+        </div>
+
+       <div class="container">
+       {% block content%}
+       {% endblock %}
+      
+  </div>  
+       <div class="container" >
+    <h2 style="color:#008080 ;font-size:35px;margin-left: 600px;margin-top:20px;">Please Enter Details</h2>
+    <br>
+        <form method="post" enctype="multipart/form-data" action="predictMPG">
+     {% csrf_token %}
+      <div style="margin-left: 450px;margin-top:20px;color:#008080;font-size: 20px;display: inline-block;width: 150px;text-align: right;"class="col-md-4 col-sm-4"><label for="fname">LP_CustomerPrincipalPayments</label> </div> <input style="margin-left: 400px;margin-top:20px;" name="LP_CustomerPrincipalPaymentsVal" type="number"step="0.0000000001" value={{temp.LP_CustomerPrincipalPayments}}><br><br>
+     <div style="margin-left: 450px;margin-top:20px;color:#008080;font-size: 20px;display: inline-block;width: 150px;text-align: right;" class="col-md-4 col-sm-4" ><label for="lname">LP_CustomerPayments:</label> </div> <input style="margin-left: 400px;margin-top:20px;" type="number" step="0.0000000001" id="lname" name="LP_CustomerPaymentsVal" value={{temp.LP_CustomerPayments}}><br><br>
+     <div style="margin-left: 430px;margin-top:20px;color:#008080;font-size: 20px;display: inline-block;width: 150px;text-align: right;" class="col-md-4 col-sm-4" ><label for="fname">BorrowerAPR:</label> </div> <input style="margin-left: 430px;margin-top:20px;" type="number" step="0.0000000001" id="fname" name="BorrowerAPRVal" value={{temp.BorrowerAPR}}><br><br>
+     <div style="margin-left: 450px;margin-top:20px;color:#008080;font-size: 20px;display: inline-block;width: 150px;text-align: right;" class="col-md-4 col-sm-4" ><label for="lname">EstimatedEffectiveYield:</label> </div> <input style="margin-left: 400px;margin-top:20px;" type="number" step="0.0000000001" id="lname" name="EstimatedEffectiveYieldVal" value={{temp.EstimatedEffectiveYield}}><br><br>
+     <div style="margin-left: 450px;margin-top:20px;color:#008080;font-size: 20px;display: inline-block;width: 150px;text-align: right;" class="col-md-4 col-sm-4" ><label for="fname">LoanMonthsSinceOrigination:</label></div>  <input style="margin-left: 400px;margin-top:20px;" type="number" step="0.0000000001" id="fname" name="LoanMonthsSinceOriginationVal" value={{temp.LoanMonthsSinceOrigination}}><br><br>
+     <div style="margin-left: 450px;margin-top:20px;color:#008080;font-size: 20px;display: inline-block;width: 150px;text-align: right;" class="col-md-4 col-sm-4" ><label for="lname">DateCreditPulledYear:</label> </div> <input style="margin-left: 400px;margin-top:20px;" type="number" step="0.0000000001" id="lname" name="DateCreditPulledYearVal" value={{temp.DateCreditPulledYear}}><br><br>
+     <div style="margin-left: 450px;margin-top:20px;color:#008080;font-size: 20px;display: inline-block;width: 150px;text-align: right;" class="col-md-4 col-sm-4"><label for="lname">ListingCreationDateYear:</label> </div> <input style="margin-left: 400px;margin-top:20px;" type="number" step="0.0000000001" id="lname" name="ListingCreationDateYearVal" value={{temp.ListingCreationDateYear}}><br><br>
+     <div style="margin-left: 450px;margin-top:20px;color:#008080;font-size: 20px;display: inline-block;width: 150px;text-align: right;" class="col-md-4 col-sm-4" ><label for="fname">LoanOriginationDateYear:</label> </div> <input style="margin-left: 400px;margin-top:20px;" type="number" step="0.0000000001" id="fname" name="LoanOriginationDateYearVal" value={{temp.LoanOriginationDateYear}}><br><br>
+     <div style="margin-left: 450px;margin-top:20px;color:#008080;font-size: 20px;display: inline-block;width: 150px;text-align: right;"  class="col-md-4 col-sm-4" ><label for="fname">EstimatedReturn:</label> </div> <input style="margin-left: 400px;margin-top:20px;" type="number" step="0.0000000001" id="fname" name="EstimatedReturnVal" value={{temp.EstimatedReturn}}><br><br>
+     <div style="margin-left: 440px;margin-top:20px;color:#008080;font-size: 20px;display: inline-block;width: 150px;text-align: right;" class="col-md-4 col-sm-4" ><label for="fname">EstimatedLoss:</label> </div> <input style="margin-left: 400px;margin-top:20px;" type="number" step="0.0000000001"  id="fname" name="EstimatedLossVal" value={{temp.EstimatedLoss}}><br><br>
+     <div style="margin-left: 435px;margin-top:20px;color:#008080;font-size: 20px;display: inline-block;width: 150px;text-align: right;" class="col-md-4 col-sm-4"><label for="fname">BorrowerRate:</label> </div> <input style="margin-left: 400px;margin-top:20px;" type="number" step="0.0000000001" id="fname" name="BorrowerRateVal" value={{temp.BorrowerRate}}><br><br>
+     <div style="margin-left: 420px;margin-top:20px;color:#008080;font-size: 20px;display: inline-block;width: 150px;text-align: right;" class="col-md-4 col-sm-4" ><label for="fname">LenderYield:</label> </div> <input style="margin-left: 430px;margin-top:20px;" type="number" step="0.0000000001" id="fname" name="LenderYieldVal" value={{temp.LenderYield}}><br><br>
+     <br>
+     <input style="margin-left: 730px;margin-top:20px; background-color:#008080; color:white; font-size: 20px; height:60px;width:90px" type="submit" value="Predict" >
+     </form>
+     <br>
+    <h2 style="color:#008080 ;margin-left: 740px;">{{scoreVal}}</h2>
+{% if scoreVal %}
+     <h2 style="color:#008080 ;margin-left: 700px;">Good Borrower !</h2>
+{% endif %}
+
+    </div>
+    
+      <!-- SCRIPTS -->
+      <script  src="{% static 'js/jquery.js' %}"></script>
+      <script  src="{% static 'js/bootstrap.min.js' %}"></script>
+      <script  src="{% static 'js/jquery.sticky.js' %}"></script>
+      <script  src="{% static 'js/jquery.stellar.min.js' %}"></script>
+      <script  src="{% static 'js/wow.min.js' %}"></script>
+      <script  src="{% static 'js/smoothscroll.js' %}"></script>
+      <script  src="{% static 'js/owl.carousel.min.js' %}"></script>
+      <script  src="{% static 'js/custom.js' %}"></script>
+ 
+    </body>
+</html>
